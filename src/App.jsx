@@ -1,20 +1,19 @@
 import { useState } from "react";
+import Login from "./UserLogin";
 const App = () => {
-  const [name, setName] = useState("hello");
-  const [fruit, setfruite] = useState("banana");
-  const [count, setCount] = useState("1000");
-  const updataName = () => {
-    setName("world");
-    setfruite("mango");
-    setCount("500");
-  };
+  const [toggle, setToggle] = useState(true);
+
   return (
     <div>
-      <h1>State</h1>
-      <h1>The name is: {name} </h1>
-      <h1>Fruit: {fruit}</h1>
-      <h1>Count: {count}</h1>
-      <button onClick={updataName}>please update name</button>
+      <h1>Toggle in react js</h1>
+      <button
+        onClick={() => {
+          setToggle(!toggle);
+        }}
+      >
+        change userName
+      </button>
+      {toggle ? <Login /> : null}
     </div>
   );
 };
