@@ -1,19 +1,27 @@
 import { useState } from "react";
-import Login from "./UserLogin";
 const App = () => {
-  const [toggle, setToggle] = useState(true);
-
+  const [count, setCount] = useState(0);
   return (
     <div>
-      <h1>Toggle in react js</h1>
+      <h1>Multiple condition in react js</h1>
+      <h1>count: {count}</h1>
       <button
         onClick={() => {
-          setToggle(!toggle);
+          setCount(count + 1);
         }}
       >
-        change userName
+        UpdateCount
       </button>
-      {toggle ? <Login /> : null}
+
+      {count == 0 ? (
+        <h1>count:0</h1>
+      ) : count == 1 ? (
+        <h2>count: 1</h2>
+      ) : count == 2 ? (
+        <h2>count: 3</h2>
+      ) : (
+        <h1>other condition</h1>
+      )}
     </div>
   );
 };
