@@ -1,20 +1,27 @@
-import Wrapper from "./Wrapper";
+import { useState } from "react";
+
 const App = () => {
+  const [inputval, setInputval] = useState("");
   return (
     <div>
-      <h1>Default Props in react js</h1>
-      {/* <Wrapper name="vijay" />
-      <Wrapper name="hellll" />
-      <Wrapper name="pawan kumar" /> */}
-      <Wrapper color="red">
-        <h1>hello world</h1>
-      </Wrapper>
-      <Wrapper color="blue">
-        <h1>hello world1</h1>
-      </Wrapper>
-      <Wrapper>
-        <h1>hello world2 </h1>
-      </Wrapper>
+      <h1>Get input field value</h1>
+      <input
+        type="text"
+        value={inputval}
+        onChange={(event) => {
+          setInputval(event.target.value);
+        }}
+        placeholder="enter your name"
+      ></input>
+      <h1>{inputval}</h1>
+
+      <button
+        onClick={() => {
+          setInputval("");
+        }}
+      >
+        clear value
+      </button>
     </div>
   );
 };
