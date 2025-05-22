@@ -1,3 +1,5 @@
+import Users from "./Users";
+
 const App = () => {
   const userS = [
     {
@@ -31,30 +33,13 @@ const App = () => {
       email: "rahul@gmail.com",
     },
   ];
-  console.log("userS", userS);
+  console.log("userSuserS", userS);
   return (
     <div>
-      <h1>Loop in JSX </h1>
-      <table border={1}>
-        <thead>
-          <tr>
-            <td>id</td>
-            <td>name</td>
-            <td>age</td>
-            <td>email</td>
-          </tr>
-        </thead>
-        <tbody>
-          {userS.map((item) => (
-            <tr key={item.id}>
-              <td>{item.id}</td>
-              <td>{item.name}</td>
-              <td>{item.age}</td>
-              <td>{item.email}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      <h1>Reuse component in loop </h1>
+      {userS.map((item) => (
+        <Users data={item} />
+      ))}
     </div>
   );
 };
