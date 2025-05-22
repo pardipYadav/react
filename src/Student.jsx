@@ -1,8 +1,13 @@
-const Student = ({ stuName }) => {
+const Students = ({ student }) => {
   return (
-    <>
-      <h1>studend name : {stuName}</h1>
-    </>
+    <div>
+      <h3>Students</h3>
+      <ul>
+        <li>{student.studentName}</li>
+        <li>{student.rollnumber}</li>
+        <li>{student.email}</li>
+      </ul>
+    </div>
   );
 };
-export default Student;
+export default Students;
