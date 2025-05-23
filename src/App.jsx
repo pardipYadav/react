@@ -1,32 +1,17 @@
-import { useEffect, useState } from "react";
-
+import { useState } from "react";
+import Counter from "./Counter";
 const App = () => {
   const [count, setCount] = useState(0);
-  const hook = () => {
-    console.log("hello world");
-  };
-
-  // useEffect(() => {
-  //   hook();
-  // }); // call every time
-  // useEffect(() => {
-  //   hook();
-  // }, []); // call only once
-
-  useEffect(() => {
-    hook();
-  }, [count]); // call on changing single state (dependcy)
-
+  const [data, setData] = useState(0);
+  const [display, setDisplay] = useState(true);
   return (
     <div>
-      <h1>UseEffect Hook </h1>
-      <button
-        onClick={() => {
-          setCount(count + 1);
-        }}
-      >
-        click for increase{count}
-      </button>
+      <h1>UseEffect Hook with props </h1>
+      {display ? <Counter count={count} data={data} /> : null}
+
+      <button onClick={() => setCount(count + 1)}>count {count}</button>
+      <button onClick={() => setData(data + 1)}>data {data}</button>
+      <button onClick={() => setDisplay(!display)}>Toggle</button>
     </div>
   );
 };
