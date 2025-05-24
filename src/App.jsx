@@ -1,17 +1,21 @@
-import { useState } from "react";
-import Counter from "./Counter";
+import { useRef } from "react";
+
 const App = () => {
-  const [count, setCount] = useState(0);
-  const [data, setData] = useState(0);
-  const [display, setDisplay] = useState(true);
+  const inputRef = useRef();
+  const inputrefhandler = () => {
+    console.log(inputRef);
+    inputRef.current.focus();
+  };
   return (
     <div>
-      <h1>UseEffect Hook with props </h1>
-      {display ? <Counter count={count} data={data} /> : null}
-
-      <button onClick={() => setCount(count + 1)}>count {count}</button>
-      <button onClick={() => setData(data + 1)}>data {data}</button>
-      <button onClick={() => setDisplay(!display)}>Toggle</button>
+      <h1>useRef Hook</h1>
+      <input
+        type="text"
+        ref={inputRef}
+        placeholder="enter something"
+        id="usereff"
+      />
+      <button onClick={() => inputrefhandler()}>submitsss</button>
     </div>
   );
 };
