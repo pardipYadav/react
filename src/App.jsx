@@ -5,6 +5,7 @@ const App = () => {
   const inputrefhandler = () => {
     console.log(inputRef);
     inputRef.current.focus();
+    inputRef.current.style.color = "red";
   };
   return (
     <div>
