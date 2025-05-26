@@ -1,48 +1,22 @@
-import { useRef } from "react";
+import Users from "./Users";
 
 const App = () => {
-  const userRef = useRef();
-  const submitHandler = (event) => {
-    event.preventDefault();
-    const user = document.querySelector("#user").value;
-    const pass = document.querySelector("#pass").value;
-    console.log("un-comp", user, pass);
+  const displayName = (name) => {
+    alert(name);
   };
-  const submitHandlerUseRef = (event) => {
-    event.preventDefault();
-    const current = userRef.current.value;
-    console.log("submitHandlerUseRef", current);
+  const onClick = () => {
+    alert("this is function not event");
   };
-
   return (
     <div>
-      <h1>unctrolled component</h1>
-      <form
-        method=""
-        action="
-      "
-        onSubmit={submitHandler}
-      >
-        <input className="" id="user" type="text" />
-        <br />
-        <input className="" id="pass" type="password" />
-        <br />
-        <button>submit</button>
-      </form>
-      {/* 
-      <h3>below values get in uncontrolled component</h3>
-      <span style={{ color: "red" }}>{user}</span>
-      <span style={{ color: "red" }}>{pass}</span> */}
-
-      <h1>Uncontrolled component by useRef</h1>
-      <form action="" method="" onSubmit={submitHandlerUseRef}>
-        <input ref={userRef} type="text" id="userRef" />
-        <br></br>
-        <input type="password" ref={userRef} id="passRef" />
-        <br></br>
-
-        <button> submit useRef</button>
-      </form>
+      <h1>pass function component in parent component</h1>
+      <Users displayName={displayName} name="lakhan" onClick={onClick} />
+      <br></br>
+      <Users displayName={displayName} name="ram" onClick={onClick} />
+      <br></br>
+      <Users displayName={displayName} name="rohan" onClick={onClick} />
+      <br></br>
+      <Users displayName={displayName} name="vinay" onClick={onClick} />
     </div>
   );
 };
