@@ -1,4 +1,4 @@
-/********* old school style before 19 virsion ***********/
+/********* old school style before 19 version ***********/
 
 /*import { forwardRef } from "react";
 
@@ -14,7 +14,7 @@ const Users = (props, ref) => {
 
 export default forwardRef(Users);*/
 
-/********* old school style before 19 virsion ***********/
+/********* old school style before 19 version ***********/
 
 const Users = (props) => {
   return (
