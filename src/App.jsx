@@ -19,7 +19,7 @@ const App = () => {
   };
   return (
     <div>
-      <h1>Forword Ref</h1>
+      <h1>useFormStatus</h1>
       <form action={submitHandler}>
         <Inputs />
       </form>
