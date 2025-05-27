@@ -1,18 +1,28 @@
-import { useRef } from "react";
-import Users from "./Users";
+import { useFormStatus } from "react-dom";
 
 const App = () => {
-  const inputRef = useRef(null);
-  const inputRefAction = () => {
-    inputRef.current.value = "200";
-    inputRef.current.focus();
-    inputRef.current.style.color = "red";
+  const submitHandler = async () => {
+    await new Promise((res) => setTimeout(res, 2000));
+    console.log("res");
+  };
+  const Inputs = () => {
+    const { pending } = useFormStatus();
+    return (
+      <>
+        <input type="<text>" />
+        <br></br>
+        <input type="password" />
+        <br></br>
+        <button disabled={pending}>{pending ? "submiting" : "submit"}</button>
+      </>
+    );
   };
   return (
     <div>
       <h1>Forword Ref</h1>
-      <Users ref={inputRef} />
-      <button onClick={inputRefAction}>inputRef</button>
+      <form action={submitHandler}>
+        <Inputs />
+      </form>
     </div>
   );
 };
