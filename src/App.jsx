@@ -1,50 +1,44 @@
-import { useState } from "react";
+import { useActionState } from "react";
 
 const App = () => {
-  const [userName, setUserName] = useState([
-    "pardeep",
-    "rahul",
-    "deepak",
-    "param",
-  ]);
-  const [details, setDetails] = useState([
-    { name: "pardeep", age: "27" },
-    { name: "rahule", age: "30" },
-    { name: "param", age: "53" },
-  ]);
-  const handleName = (name) => {
-    userName[userName.length - 1] = name;
-    setUserName([...userName]);
+  const handleForm = async (prevousepreviousState, FormData) => {
+    let uName = FormData.get("username");
+    let upass = FormData.get("password");
+    await new Promise((res) => setTimeout(res, 2000));
+    if (uName && upass) {
+      return { message: "Data submited ", uName, upass };
+    } else {
+      return { error: " Failed to submit enter proper data", uName, upass };
+    }
   };
-
-  const handleAge = (age) => {
-    details[details.length - 1].age = age;
-    setDetails([...details]);
-  };
+  const [state, formAction, isPending] = useActionState(handleForm, undefined);
   return (
     <div>
-      <h1>update array state (normal array )</h1>
-      <input
-        type="text"
-        onChange={(e) => handleName(e.target.value)}
-        placeholder="enter name"
-      />
-      {userName.map((item, index) => (
-        <h3 key={index}>{item}</h3>
-      ))}
-      <hr />
-
-      <h3>updating array last object age </h3>
-      <input
-        type="text"
-        onChange={(e) => handleAge(e.target.value)}
-        placeholder="enter age"
-      />
-      {details.map((item, index) => (
-        <h4 key={index}>
-          {item.name},{item.age}
-        </h4>
-      ))}
+      <h1>UseActionState Hook</h1>
+      <form action={formAction}>
+        <input type="text" name="username" placeholder="enter username" />
+        <br />
+        <br />
+        <input
+          type="password"
+          name="password"
+          id=""
+          placeholder="enter password"
+        />
+        <br />
+        <br />
+        <button disabled={isPending} type="submit">
+          Submit
+        </button>
+        <br />
+        <br />
+        {state?.message && (
+          <span style={{ color: "green" }}>{state?.message}</span>
+        )}
+        {state?.error && <span style={{ color: "red" }}>{state?.error}</span>}
+      </form>
+      <h4>userName:{state?.uName}</h4>
+      <h4>userPass:{state?.upass}</h4>
     </div>
   );
 };
