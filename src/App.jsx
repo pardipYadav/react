@@ -1,25 +1,27 @@
-import { useId } from "react";
-
+import { useState } from "react";
+import Collage from "./ContextComponents/Collage";
+import { subjectContext } from "./ContextData";
 const App = () => {
-  const name = useId();
-  const username = useId();
-  const password = useId();
-
+  const [sub, setSub] = useState("");
+  const handleContext = (value) => {
+    setSub(value);
+  };
   return (
-    <div>
-      <h1>useId Hook</h1>
-      <form action="">
-        <label htmlFor={name}>name</label>
-        <input type="text" name="" id={name} />
-        <br />
-        <br />
-        <label htmlFor={username}>username</label>
-        <input type="text" id={username} />
-        <br />
-        <br />
-        <label htmlFor={password}>password</label>
-        <input type="text" id={password} />
-      </form>
+    <div style={{ backgroundColor: "yellow", padding: "10px" }}>
+      <h1>Context Api</h1>
+      <select
+        value={sub}
+        onChange={(event) => handleContext(event.target.value)}
+      >
+        <option value="">Select option</option>
+        <option value="English">English</option>
+        <option value="Science">Science</option>
+        <option value="Geography">Geography</option>
+      </select>
+      <button onClick={() => setSub("")}>Clear subject</button>
+      <subjectContext.Provider value={sub}>
+        <Collage />
+      </subjectContext.Provider>
     </div>
   );
 };
