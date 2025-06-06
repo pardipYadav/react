@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router";
 const UserListing = () => {
   const [userData, setUserdata] = useState([]);
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
   useEffect(() => {
     setLoading(true);
     fetchUserData();
@@ -26,6 +28,10 @@ const UserListing = () => {
     }
   };
 
+  const editUserData = (id) => {
+    navigate("/edit/" + id);
+  };
+
   return (
     <>
       <h1>Fetch api data</h1>
@@ -36,6 +42,7 @@ const UserListing = () => {
             <h4>user age: {item.age}</h4>
             <h4>user email: {item.email}</h4>
             <button onClick={() => deleteUserData(item.id)}>Delete</button>
+            <button onClick={() => editUserData(item.id)}>edit</button>
             <hr />
           </div>
         ))

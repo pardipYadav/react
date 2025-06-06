@@ -1,6 +1,7 @@
 import { Route, Routes, NavLink } from "react-router";
 import UserListing from "./Components/UserData/UserListing";
 import UserAdd from "./Components/UserData/UserAdd";
+import EditUsers from "./Components/UserData/EditUsers";
 
 const App = () => {
   return (
@@ -10,12 +11,15 @@ const App = () => {
           <li>
             <NavLink to="/">Home</NavLink>
           </li>
-          <NavLink to="add">add user</NavLink>
+          <li>
+            <NavLink to="/add">add user</NavLink>
+          </li>
         </ul>
       </div>
       <Routes>
         <Route path="/" element={<UserListing />} />
         <Route path="/add" element={<UserAdd />} />
+        <Route path="/edit/:id" element={<EditUsers />} />
       </Routes>
     </>
   );
