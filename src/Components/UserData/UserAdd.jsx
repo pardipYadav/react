@@ -42,6 +42,7 @@ const UserAdd = () => {
       <br />
       <br />
       <button onClick={addusers}>Sumit</button>
+      <button>Delete</button>
     </>
   );
 };

@@ -14,6 +14,17 @@ const UserListing = () => {
     setUserdata(response);
     setLoading(false);
   };
+  const deleteUserData = async (id) => {
+    const url = "http://localhost:3000/users";
+    let response = await fetch(url + "/" + id, {
+      method: "delete",
+    });
+    response = await response.json();
+    if (response) {
+      alert("data delete successfully");
+      fetchUserData();
+    }
+  };
 
   return (
     <>
@@ -24,6 +35,7 @@ const UserListing = () => {
             <h4>user name: {item.name}</h4>
             <h4>user age: {item.age}</h4>
             <h4>user email: {item.email}</h4>
+            <button onClick={() => deleteUserData(item.id)}>Delete</button>
             <hr />
           </div>
         ))
