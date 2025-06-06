@@ -1,14 +1,23 @@
-import useToggle from "./ContextComponents/Hooks/useToggle";
+import { Route, Routes, NavLink } from "react-router";
+import UserListing from "./Components/UserData/UserListing";
+import UserAdd from "./Components/UserData/UserAdd";
 
 const App = () => {
-  const [value, toggleValue] = useToggle(true);
   return (
-    <div>
-      <button onClick={toggleValue}>toggle</button>
-      <button onClick={() => toggleValue(false)}>hide toggle</button>
-      <button onClick={() => toggleValue(true)}>show toggle</button>
-      {value ? <h1>custom hook useToggle</h1> : null}
-    </div>
+    <>
+      <div>
+        <ul>
+          <li>
+            <NavLink to="/">Home</NavLink>
+          </li>
+          <NavLink to="add">add user</NavLink>
+        </ul>
+      </div>
+      <Routes>
+        <Route path="/" element={<UserListing />} />
+        <Route path="/add" element={<UserAdd />} />
+      </Routes>
+    </>
   );
 };
 
